@@ -85,7 +85,7 @@ def Conv1D(name, input_dim, output_dim, filter_size, inputs, he_init=True, mask_
             with tf.name_scope('filter_mask'):
                 filters = filters * mask
 
-        result = tf.nn.conv1d(
+        result = tf.compat.v1.nn.conv1d(      #compat mode
             value=inputs, 
             filters=filters, 
             stride=stride,
