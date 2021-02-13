@@ -48,7 +48,7 @@ def softmax(logits):
     )
 
 def make_noise(shape):
-    return tf.random_normal(shape)
+    return tf.random.normal(shape)
 
 def ResBlock(name, inputs):
     output = inputs
