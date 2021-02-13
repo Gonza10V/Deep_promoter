@@ -11,6 +11,7 @@ import tflib as lib
 import tflib.ops.linear
 import tflib.ops.conv1d
 import tflib.plot
+tf.compat.v1.disable_eager_execution() # added compatibility 
 
 # Download Google Billion Word at http://www.statmt.org/lm-benchmark/ and
 # fill in the path to the extracted files here!
@@ -84,7 +85,7 @@ def Discriminator(inputs):
     output = lib.ops.linear.Linear('Discriminator.Output', SEQ_LEN*DIM, 1, output)
     return output
 
-real_inputs_discrete = tf.compat.v1.placeholder(tf.int32, shape=[BATCH_SIZE, SEQ_LEN])
+real_inputs_discrete = tf.compat.v1.placeholder(tf.int32, shape=[BATCH_SIZE, SEQ_LEN]) #modified the placeholder function to work
 real_inputs = tf.one_hot(real_inputs_discrete, len(charmap))
 fake_inputs = Generator(BATCH_SIZE)
 fake_inputs_discrete = tf.argmax(fake_inputs, fake_inputs.get_shape().ndims-1)
