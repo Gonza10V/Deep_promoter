@@ -146,7 +146,7 @@ true_char_ngram_lms = [language_helpers.NgramLanguageModel(i+1, lines, tokenize=
 
 with tf.compat.v1.Session() as session: # updated from tf.Session to tf.compat.v1.Session()
 
-    session.run(tf.initialize_all_variables())
+    session.run(tf.compat.v1.initialize_all_variables()) # updated from tf.initialize_all_variables() to tf.compat.v1.initialize_all_variables()
 
     def generate_samples():
         samples = session.run(fake_inputs)
