@@ -123,7 +123,7 @@ gen_train_op = tf.compat.v1.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, b
 disc_train_op = tf.compat.v1.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(disc_cost, var_list=disc_params)
 
 
-saver = tf.train.Saver(max_to_keep=4)
+saver = tf.compat.v1.train.Saver(max_to_keep=4) #updated from tf.train.Saver to tf.compat.v1.train.Saver
 # Dataset iterator
 def inf_train_gen():
     while True:
