@@ -90,7 +90,7 @@ def Conv1D(name, input_dim, output_dim, filter_size, inputs, he_init=True, mask_
             filters=filters, 
             stride=stride,
             padding='SAME',
-            data_format='NCHW'
+            data_format='NCW' #original 'NCHW'
         )
 
         if biases:
