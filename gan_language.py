@@ -99,7 +99,7 @@ gen_cost = -tf.reduce_mean(disc_fake)
 
 
 # WGAN lipschitz-penalty
-alpha = tf.random_uniform(
+alpha = tf.random.uniform( # originally tf.random_uniform( 
     shape=[BATCH_SIZE,1,1], 
     minval=0.,
     maxval=1.
