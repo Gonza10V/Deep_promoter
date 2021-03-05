@@ -114,8 +114,8 @@ disc_cost += LAMBDA*gradient_penalty
 gen_params = lib.params_with_name('Generator')
 disc_params = lib.params_with_name('Discriminator')
 
-gen_train_op = tf.optimizers.Adam(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(gen_cost, var_list=gen_params) #updated from tf.train.AdamOptimizer to tf.optimizers.Adam
-disc_train_op = tf.optimizers.Adam(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(disc_cost, var_list=disc_params) #updated from tf.train.AdamOptimizer to tf.optimizers.Adam
+gen_train_op = tf.optimizers.Adam(learning_rate=1e-4, beta_1=0.5, beta_2=0.9).minimize(gen_cost, var_list=gen_params) #updated from tf.train.AdamOptimizer to tf.optimizers.Adam and input syntax from beta1 and beta2 to beta_1 and beta_2
+disc_train_op = tf.optimizers.Adam(learning_rate=1e-4, beta_1=0.5, beta_2=0.9).minimize(disc_cost, var_list=disc_params) #updated from tf.train.AdamOptimizer to tf.optimizers.Adam and input syntax from beta1 and beta2 to beta_1 and beta_2
 
 saver = tf.train.Saver(max_to_keep=4)
 # Dataset iterator
