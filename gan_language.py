@@ -144,7 +144,7 @@ for i in xrange(4):
     print "validation set JSD for n={}: {}".format(i+1, true_char_ngram_lms[i].js_with(validation_char_ngram_lms[i]))
 true_char_ngram_lms = [language_helpers.NgramLanguageModel(i+1, lines, tokenize=False) for i in xrange(4)]
 
-with tf.Session() as session:
+with tf.compat.v1.Session as session: # updated from tf.Session to tf.compat.v1.Session
 
     session.run(tf.initialize_all_variables())
 
