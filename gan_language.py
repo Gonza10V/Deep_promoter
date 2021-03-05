@@ -107,7 +107,7 @@ alpha = tf.random.uniform( # originally tf.random_uniform(
 differences = fake_inputs - real_inputs
 interpolates = real_inputs + (alpha*differences)
 gradients = tf.gradients(Discriminator(interpolates), [interpolates])[0]
-slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=[1,2]))
+slopes = tf.sqrt(tf.compat.v1.reduce_sum(tf.square(gradients), reduction_indices=[1,2])) #updated from tf.reduce_sum() to tf.compat.v1.reduce_sum()
 gradient_penalty = tf.reduce_mean((slopes-1.)**2)
 disc_cost += LAMBDA*gradient_penalty
 
