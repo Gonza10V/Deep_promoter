@@ -114,9 +114,14 @@ disc_cost += LAMBDA*gradient_penalty
 gen_params = lib.params_with_name('Generator')
 disc_params = lib.params_with_name('Discriminator')
 
-#updated from tf.train.AdamOptimizer to tf.keras.optimizers.Adam and input syntax from beta1 and beta2 to beta_1 and beta_2 in numpy
-gen_train_op = tf.keras.optimizers.Adam(learning_rate=1e-4, beta_1=0.5, beta_2=0.9).minimize(gen_cost, var_list=gen_params).numpy() 
-disc_train_op = tf.keras.optimizers.Adam(learning_rate=1e-4, beta_1=0.5, beta_2=0.9).minimize(disc_cost, var_list=disc_params).numpy() 
+# previusly updated from tf.train.AdamOptimizer to tf.keras.optimizers.Adam and input syntax from beta1 and beta2 to beta_1 and beta_2 in numpy
+#gen_train_op = tf.keras.optimizers.Adam(learning_rate=1e-4, beta_1=0.5, beta_2=0.9).minimize(gen_cost, var_list=gen_params).numpy() 
+#disc_train_op = tf.keras.optimizers.Adam(learning_rate=1e-4, beta_1=0.5, beta_2=0.9).minimize(disc_cost, var_list=disc_params).numpy() 
+
+#last try updated from updated from tf.train.AdamOptimizer to tf.compat.v1.train.AdamOptimizer
+gen_train_op = tf.compat.v1.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(gen_cost, var_list=gen_params)
+disc_train_op = tf.compat.v1.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(disc_cost, var_list=disc_params)
+
 
 saver = tf.train.Saver(max_to_keep=4)
 # Dataset iterator
